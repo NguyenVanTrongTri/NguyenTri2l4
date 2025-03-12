@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "vi>
+<head>
+      <meta charset = "UFT - 8">
+      <title name = "viewport" content = "width = device - width , initial - scale = 1.0">
+      <link rel = "stylesheet" href ="style.css">
+<\head>
+<body>
+      <header>
+            <h1> Xin chao den voi Wedsite cua tui! </h1>
+            <p> Day la mot trang ca nhan do tui tao ra. <\p>
+      <\header>
+      <section>
+            <button onclick = "sayHello()">Nhan vao day! </button>
+            <p id = "message"></p>
+      <\section>
+      <footer>
+              <p>&copy ;2025 - Wedsite Demo <\p>
+      <footer>
+      <script src = "script.js"></script>
+<\body>
+<\html>
