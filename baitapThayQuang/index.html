@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Store Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        body {
+            color: #111;
+            background-color: #fff;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1000;
+        }
+        .logo svg {
+            width: 60px;
+            height: auto;
+            cursor: pointer;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: #757575;
+        }
+        .header-right-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .search-container {
+            background: #f5f5f5;
+            padding: 8px 15px;
+            border-radius: 100px; 
+            display: flex;
+            align-items: center;
+            width: 180px;
+        }
+        .search-container input {
+            border: none;
+            background: none;
+            outline: none;
+            margin-left: 10px;
+            width: 100%;
+            font-size: 14px;
+        }
+        .icon-wishlist {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .btn-auth {
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+        .btn-signin {
+            background-color: #e5e5e5;
+            color: #111;
+            border: 1px solid #d1d1d1;
+        }
+        .btn-signin:hover {
+            background-color: #d5d5d5;
+        }
+        .btn-register {
+            background-color: #111;
+            color: #fff;
+        }
+        .btn-register:hover {
+            background-color: #333;
+        }
+        main {
+            padding: 0 40px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .section-header h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .view-all {
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .nav-btn {
+            width: 35px;
+            height: 35px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            cursor: pointer;
+        }
+        .image-container {
+            background-color: #f6f6f6;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .image-container img {
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        .product-info h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .product-info p {
+            font-size: 14px;
+            color: #757575;
+            margin-bottom: 8px;
+        }
+        .product-info .price {
+            font-weight: 500;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="#111"><path d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z"></path></svg>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">New & Featured</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Kids</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-right-group">
+            <div class="search-container">
+                <span>🔍</span>
+                <input type="text" placeholder="Search">
+            </div>
+            
+            <div class="icon-wishlist">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+            </div>
+
+            <div class="auth-buttons">
+                <button class="btn-auth btn-signin">Sign in</button>
+                <button class="btn-auth btn-register">Register</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Latest in Basketball</h2>
+                <div class="controls">
+                    <span class="view-all">View All</span>
+                    <button class="nav-btn">＜</button>
+                    <button class="nav-btn">＞</button>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame1.png"></div>
+                    <div class="product-info">
+                        <h3>Jordan Heir Series 2 PF</h3>
+                        <p>Women's Basketball Shoes</p>
+                        <p class="price">3,239,000₫</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame2.png"></div>
+                    <div class="product-info">
+                        <h3>Kobe IX Elite Low EM Protro</h3>
+                        <p>Basketball Shoes</p>
+                        <p class="price">5,279,000₫</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame3.png"></div>
+                    <div class="product-info">
+                        <h3>Luka 5 'Luka Lifestyle' PF</h3>
+                        <p>Basketball Shoes</p>
+                        <p class="price">3,829,000₫</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Running</h2>
+                <div class="controls">
+                    <span class="view-all">View All</span>
+                    <button class="nav-btn">＜</button>
+                    <button class="nav-btn">＞</button>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame4.png"></div>
+                    <div class="product-info">
+                        <h3>Nike Vaporfly 3</h3>
+                        <p>Women's Road Racing Shoes</p>
+                        <p class="price">6,609,000₫</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame5.png"></div>
+                    <div class="product-info">
+                        <h3>Nike Alphafly 3</h3>
+                        <p>Women's Road Racing Shoes</p>
+                        <p class="price">8,059,000₫</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container"><img src="image/Frame6.png"></div>
+                    <div class="product-info">
+                        <h3>Nike Vaporfly 3 Glam</h3>
+                        <p>Men's Road Racing Shoes</p>
+                        <p class="price">7,629,000₫</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Shop By Sport</h2>
+                <div class="controls">
+                    <span class="view-all">View All</span>
+                    <button class="nav-btn">＜</button>
+                    <button class="nav-btn">＞</button>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="image-container lifestyle-box">
+                        <img src="image/Frame7.png" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Running</h3>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container lifestyle-box">
+                        <img src="image/Frame8.png" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Football</h3>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="image-container lifestyle-box">
+                        <img src="image/Frame9.png" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Basketball</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
